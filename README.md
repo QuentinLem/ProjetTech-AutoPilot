@@ -2,6 +2,7 @@
 
 Liens intéressant : 
 https://www.jmdoudoux.fr/java/dej/chap-json.htm
+https://www.jmdoudoux.fr/java/dej/chap-net.htm
 
 Notes utiles :
  - raphael.druon.emi.u-bordeaux.fr
