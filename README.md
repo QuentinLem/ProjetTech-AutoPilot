@@ -1,18 +1,30 @@
 # ProjetTech-AutoPilot
 
-03/03/17: pour le 08/03/17 - envoyer, étape 1 du code :
- - Créer Serveur/Client (java/connexion tcp)
- - Envoi d'un objet JSON basique entre les deux.
- - A faire sur dépôt Git et leur envoyer le lien
- - Deadline = mercredi 08/03 au soir /!\
+## 03/03/17
+**Pour le 08/03/17** - étape 1 du code :
+ - [x] Créer Serveur/Client (java/connexion tcp)
+ - [ ] Envoi d'un objet JSON basique entre les deux
+ - [ ] Envoyer le lien du dêpot GitHub
+ 
+ ** Deadline : Mercredi 08/03 au soir /!\ **
 
 
-Liens intéressant :
- - https://www.jmdoudoux.fr/java/dej/chap-json.htm
- - https://www.jmdoudoux.fr/java/dej/chap-net.htm
- - http://stackoverflow.com/questions/2591098/how-to-parse-json-in-java
- - http://theoryapp.com/parse-json-in-java/
+### Ressources :
+ - [03/03/17 - *HowTo...* do a beautiful README.md](https://guides.github.com/features/mastering-markdown/)
+ - [03/03/17 - *HowTo...* use TCP with Java](https://www.jmdoudoux.fr/java/dej/chap-net.htm)
+ - [03/03/17 - Learn JSON](https://www.jmdoudoux.fr/java/dej/chap-json.htm)
+ - [03/03/17 - JSON and Java](http://stackoverflow.com/questions/2591098/how-to-parse-json-in-java)
+ - [03/03/17 - JSON and Java *bis*](http://theoryapp.com/parse-json-in-java/)
 
-Notes utiles :
+### Notes :
  - raphael.druon.emi.u-bordeaux.fr
  - https://github.com/norips/slate -> source/index.html.md (Spec' Projet)
+
+### Contributeurs :
+ - Gauthier DELACOUR ( )
+ - Vanessa DUCAN     ( @NessaD )
+ - Quentin Lemonnier ( @QuentinLem )
+ 
+### Enseignants réferrant :
+ - Serge CHAUMETTE          ( serge.chaumette**[at]**labri.fr )
+ - Ema FALOMIN-BAGDASSARIAN ( ema.falomin-bagdassarian**[at]**labri.fr )
