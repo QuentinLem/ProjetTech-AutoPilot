@@ -2,7 +2,7 @@ import java.net.*;
 import java.io.*;
 
 public class TestClientTCP {
-  final static int port = 9632;
+  final static int port = 7182;
 
   public static void main(String[] args) {
 
@@ -11,16 +11,18 @@ public class TestClientTCP {
     PrintStream theOutputStream;
 
     try {
-      InetAddress serveur = InetAddress.getByName(args[0]); //ou: args[0]
+      InetAddress serveur = InetAddress.getByName(InetAddress.getHostAddress()); //ou: args[0]
       socket = new Socket(serveur, port);
 
       BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
       PrintStream out = new PrintStream(socket.getOutputStream());
 
-      out.println(args[1]);
+      out.println("TEST");
       System.out.println(in.readLine());
 
-    } catch (Exception e) {
+    } catch (UnknownHostException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
       e.printStackTrace();
     }
   }

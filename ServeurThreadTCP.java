@@ -1,7 +1,7 @@
 import java.net.*;
 import java.io.*;
 
-public class TestServeurThreadTCP extends Thread {
+public class ServeurThreadTCP extends Thread {
 
   final static int port = 7182;
   private Socket socket;
@@ -12,7 +12,7 @@ public class TestServeurThreadTCP extends Thread {
       System.out.println("Lancement du serveur sur "+ InetAddress.getLocalHost().toString());
       while (true) {
         Socket socketClient = socketServeur.accept();
-        TestServeurThreadTCP t = new TestServeurThreadTCP(socketClient);
+        ServeurThreadTCP t = new ServeurThreadTCP(socketClient);
         t.start();
       }
     } catch (Exception e) {
@@ -20,15 +20,11 @@ public class TestServeurThreadTCP extends Thread {
     }
   }
 
-  public TestServeurThreadTCP(Socket socket) {
+  public ServeurThreadTCP(Socket socket) {
     this.socket = socket;
   }
 
   public void run() {
-    traitements();
-  }
-
-  public void traitements() {
     try {
       String message = "";
 
@@ -36,8 +32,10 @@ public class TestServeurThreadTCP extends Thread {
 
       BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
       PrintStream out = new PrintStream(socket.getOutputStream());
+
       message = in.readLine();
-      out.println("Bonjour " + message);
+      System.out.println(message);
+      out.println("{\"type\":\"register\",\"sender_id\":\"1\",\"ack\":{\"resp\":\"ok\"}}");
 
       socket.close();
     } catch (Exception e) {
