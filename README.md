@@ -3,8 +3,8 @@
 ## 03/03/17
 **Pour le 08/03/17** - étape 1 du code :
  - [x] Créer Serveur/Client (java/connexion tcp)
- - [ ] Envoi d'un objet JSON basique entre les deux
- - [ ] Envoyer le lien du dêpot GitHub
+ - [x] Envoi d'un objet JSON basique entre les deux (-difficulté à linker la java lib JSON donc envoie d'une chaîne de caractère parser "à la main" au format JSON et réponse du serveur)
+ - [ ] Envoyer le lien du dêpot GitHub (-bientôt)
  
  ** Deadline : Mercredi 08/03 au soir /!\ **
 
