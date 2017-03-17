@@ -1,3 +1,4 @@
+package JSONJavaMaster;
 import java.net.*;
 import java.io.*;
 //import org.json.*;
@@ -14,6 +15,8 @@ public class ClientTCP {
 
       BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
       PrintStream out = new PrintStream(socket.getOutputStream());
+
+      
 
       /*
       Exemple d'objet JSON à envoyer :
@@ -50,7 +53,12 @@ public class ClientTCP {
       */
 
       // Résultat attendu :
-      out.println("{\"type\":\"register\",\"sender_class\":\"GPS\",\"sender_name\":\"gps_1\"}");
+
+      JSONObject jo= new JSONObject();
+      jo.put("type", "REGISTER");
+      jo.put("sender_class", "GPS");
+      jo.put("sender_name", "gps_1");
+      out.println(jo.toString());
       System.out.println(in.readLine());
 
     } catch (UnknownHostException e) {
