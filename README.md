@@ -4,7 +4,7 @@
 **Pour le 08/03/17** - étape 1 du code :
  - [x] Créer Serveur/Client (java/connexion tcp)
  - [x] Envoi d'un objet JSON basique entre les deux (-difficulté à linker la java lib JSON donc envoie d'une chaîne de caractère parser "à la main" au format JSON et réponse du serveur)
- - [X] Envoyer le lien du dêpot GitHub (-bientôt)
+ - [X] Envoyer le lien du dêpot GitHub
  
  ** Deadline : Mercredi 08/03 au soir /!\ **
 
@@ -21,10 +21,10 @@
  - https://github.com/norips/slate -> source/index.html.md (Spec' Projet)
 
 ### Contributeurs :
- - Gautier DELACOUR ( )
+ - Gautier DELACOUR ( @gdelacour )
  - Vanessa DUCAN     ( @NessaD )
  - Quentin Lemonnier ( @QuentinLem )
  
-### Enseignants réferrant :
+### Enseignants référents :
  - Serge CHAUMETTE          ( serge.chaumette**[at]**labri.fr )
- - Ema FALOMIN-BAGDASSARIAN ( ema.falomin-bagdassarian**[at]**labri.fr ) **-> Mauvaise adresse**
+ - Ema FALOMIR-BAGDASSARIAN ( ema.falomir-bagdassarian**[at]**labri.fr )
