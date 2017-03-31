@@ -1,4 +1,4 @@
-package JSONJavaMaster;
+package org.json;
 import java.net.*;
 import java.io.*;
 //import org.json.*;
@@ -16,7 +16,7 @@ public class ClientTCP {
       BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
       PrintStream out = new PrintStream(socket.getOutputStream());
 
-      
+
 
       /*
       Exemple d'objet JSON à envoyer :
