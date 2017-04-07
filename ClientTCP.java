@@ -1,7 +1,8 @@
-package org.json;
+package javax.json;
 import java.net.*;
 import java.io.*;
-//import org.json.*;
+import javax.json.*;
+import org.glassfish.json.*;
 
 public class ClientTCP {
 
@@ -54,10 +55,7 @@ public class ClientTCP {
 
       // Résultat attendu :
 
-      JSONObject jo= new JSONObject();
-      jo.put("type", "REGISTER");
-      jo.put("sender_class", "GPS");
-      jo.put("sender_name", "gps_1");
+      JsonObject jo= Json.createObjectBuilder().add("type", "REGISTER").add("sender_class", "GPS").add("sender_name", "gps_1").build();
       out.println(jo.toString());
       System.out.println(in.readLine());
 
