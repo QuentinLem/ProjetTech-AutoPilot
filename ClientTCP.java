@@ -1,8 +1,9 @@
-package javax.json;
+package ProjetTech_Autopilot;
 import java.net.*;
 import java.io.*;
 import javax.json.*;
 import org.glassfish.json.*;
+import java.util.Scanner;
 
 public class ClientTCP {
 
@@ -16,6 +17,10 @@ public class ClientTCP {
 
       BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
       PrintStream out = new PrintStream(socket.getOutputStream());
+
+      Scanner inSys = new Scanner(System.in);
+      String strClass;
+      String strName;
 
 
 
@@ -55,7 +60,18 @@ public class ClientTCP {
 
       // Résultat attendu :
 
-      JsonObject jo= Json.createObjectBuilder().add("type", "REGISTER").add("sender_class", "GPS").add("sender_name", "gps_1").build();
+
+      //Rentrée des caractéristiques de l'appareil
+      System.out.println("Enter the class of your device, then press \"Enter\"\n");
+      strClass = inSys.nextLine();
+      System.out.println("Enter the name of your device, then press \"Enter\"\n");
+      strName = inSys.nextLine();
+      
+      
+	  
+      
+      //Création de l'objet JSON
+      JsonObject jo= Json.createObjectBuilder().add("type", "REGISTER").add("sender_class", strClass).add("sender_name", strName).build();
       out.println(jo.toString());
       System.out.println(in.readLine());
 

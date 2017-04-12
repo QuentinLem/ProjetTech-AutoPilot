@@ -1,5 +1,3 @@
-package org.json;
-
 import javax.json.*;
 import java.net.*;
 import java.io.*;
@@ -47,11 +45,11 @@ public class ServeurThreadTCP extends Thread {
       PrintStream out = new PrintStream(socket.getOutputStream());
 
       message = in.readLine();
-      jReceive=new JsonObject(message);
-      System.out.println(jReceive.toString());
+      //jReceive=new JsonObject(message);
+      //System.out.println(jReceive.toString());
 
       //TERMINER ENVOI
-      jSend=new JsonObject("");
+      //jSend=new JsonObject("");
       //out.println("{\"type\":\"register\",\"sender_id\":\"1\",\"ack\":{\"resp\":\"ok\"}}");
 
       socket.close();
