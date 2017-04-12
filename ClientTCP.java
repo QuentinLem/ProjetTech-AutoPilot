@@ -1,4 +1,3 @@
-package ProjetTech_Autopilot;
 import java.net.*;
 import java.io.*;
 import javax.json.*;
@@ -18,6 +17,7 @@ public class ClientTCP {
       BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
       PrintStream out = new PrintStream(socket.getOutputStream());
 
+      //Objets pour la lecture dans le buffer
       Scanner inSys = new Scanner(System.in);
       String strClass;
       String strName;
@@ -67,8 +67,6 @@ public class ClientTCP {
       System.out.println("Enter the name of your device, then press \"Enter\"\n");
       strName = inSys.nextLine();
       
-      
-	  
       
       //Création de l'objet JSON
       JsonObject jo= Json.createObjectBuilder().add("type", "REGISTER").add("sender_class", strClass).add("sender_name", strName).build();
