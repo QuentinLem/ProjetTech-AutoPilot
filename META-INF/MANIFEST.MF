@@ -1,24 +1,22 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1366838925152
-Build-Jdk: 1.7.0_13
-Built-By: jitu
-Bundle-Description: Default provider for JSR 353:Java API for Processing
-  JSON
-Bundle-DocURL: http://www.oracle.com
-Bundle-License: https://glassfish.java.net/public/CDDL+GPL_1_1.html
+Bnd-LastModified: 1455412538378
+Build-Jdk: 1.8.0_05
+Built-By: Benjamin
+Bundle-Description: JSON is a light-weight, language independent, data i
+ nterchange format.		See http://www.JSON.org/		The files in this package
+  implement JSON encoders/decoders in Java.		It also includes the capabi
+ lity to convert between JSON and XML, HTTP		headers, Cookies, and CDL.	
+ 	This is a reference implementation. There is a large number of JSON pa
+ ckages		in Java. Perhaps someday the Java community will standardize on
+  one. Until		then, choose carefully.		The license includes this restric
+ tion: "The software shall be used for good,		not evil." If your conscie
+ nce cannot live with that, then choose a different		package.
+Bundle-License: http://json.org/license.html
 Bundle-ManifestVersion: 2
-Bundle-Name: JSR 353 (JSON Processing) Default Provider
-Bundle-SymbolicName: org.glassfish.javax.json
-Bundle-Vendor: Oracle
-Bundle-Version: 1.0
+Bundle-Name: JSON in Java
+Bundle-SymbolicName: json
+Bundle-Version: 20160212.0.0
 Created-By: Apache Maven Bundle Plugin
-Export-Package: javax.json;uses:="javax.json.stream,javax.json.spi";vers
- ion="1.0",javax.json.stream;uses:="javax.json";version="1.0",javax.json
- .spi;uses:="javax.json,javax.json.stream";version="1.0"
-Extension-Name: javax.json
-Implementation-Version: 1.0
-Import-Package: javax.json;version="[1.0,2)";resolution:=optional,javax.
- json.spi;version="[1.0,2)";resolution:=optional,javax.json.stream;versi
- on="[1.0,2)";resolution:=optional
-Specification-Version: 1.0
-Tool: Bnd-1.50.0
+Export-Package: org.json;version="20160212.0.0"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.6))"
+Tool: Bnd-3.0.0.201509101326
