@@ -1,6 +1,9 @@
-import javax.json.*;
 import java.net.*;
 import java.io.*;
+
+import org.json.*;
+
+
 
 public class ServeurThreadTCP extends Thread {
 
@@ -32,24 +35,28 @@ public class ServeurThreadTCP extends Thread {
     this.socket = socket;
   }
 
+
   public void run() {
     try {
-      String message = "";
-      JsonObject jReceive;
-      JsonObject jSend;
-
-      System.out.println("Connexion avec le client : " + socket.getInetAddress());
 
       //création des flux entrants et sortants de la socket
       BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-      PrintStream out = new PrintStream(socket.getOutputStream());
+      PrintWriter out = new PrintWriter(socket.getOutputStream());
+
+      System.out.println("Connexion avec le client : " + socket.getInetAddress());
+
+      private String message = "";
+      JSONObject jReceive;
+      JSONObject jSend;
+
 
       message = in.readLine();
-      //jReceive=new JsonObject(message);
-      //System.out.println(jReceive.toString());
+      System.out.println(message);
+      jReceive = new JSONObject(message);
+      System.out.println(jReceive.toString());
 
       //TERMINER ENVOI
-      //jSend=new JsonObject("");
+      //jSend=new JSONObject("");
       //out.println("{\"type\":\"register\",\"sender_id\":\"1\",\"ack\":{\"resp\":\"ok\"}}");
 
       socket.close();

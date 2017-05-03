@@ -1,8 +1,11 @@
 import java.net.*;
 import java.io.*;
-import javax.json.*;
-import org.glassfish.json.*;
+import java.util.*;
 import java.util.Scanner;
+
+import org.json.*;
+
+
 
 public class ClientTCP {
 
@@ -14,8 +17,10 @@ public class ClientTCP {
       InetAddress serveur = InetAddress.getByName(InetAddress.getLocalHost().getHostAddress()); //ou: args[0]
       socket = new Socket(serveur, port);
 
+      System.out.println("Connecté !\n");
+
       BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-      PrintStream out = new PrintStream(socket.getOutputStream());
+      PrintWriter out = new PrintWriter(socket.getOutputStream());
 
       //Objets pour la lecture dans le buffer
       Scanner inSys = new Scanner(System.in);
@@ -23,42 +28,16 @@ public class ClientTCP {
       String strName;
 
 
-
       /*
       Exemple d'objet JSON à envoyer :
       --------------------------------
       {
       "type" : "register",
-        "sender_class" : "GPS",
-        "sender_name" : "GPS 2"
+      "sender_class" : "GPS",
+      "sender_name" : "GPS_2"
       }
 
-      Code pour la création et l'envoi de l'objet :
-      ---------------------------------------------
-      JSONObjetc jo = new JSONObjetc();
-      jo.put("type", "REGISTER");
-      jo.put("sender_class", "GPS");
-      jo.put("sender_name", "gps_1");
-      System.out.println(jo.toString());
-      out.println(jo.toString());
-
-
-      --> BACKLOG :
-      ClientTCP.java:27: error: cannot find symbol
-      JSONObjetc jo = new JSONObjetc();
-      ^
-        symbol:   class JSONObjetc
-        location: class ClientTCP
-      ClientTCP.java:27: error: cannot find symbol
-            JSONObjetc jo = new JSONObjetc();
-                                ^
-        symbol:   class JSONObjetc
-        location: class ClientTCP
-      2 errors
-
       */
-
-      // Résultat attendu :
 
 
       //Rentrée des caractéristiques de l'appareil
@@ -66,12 +45,25 @@ public class ClientTCP {
       strClass = inSys.nextLine();
       System.out.println("Enter the name of your device, then press \"Enter\"\n");
       strName = inSys.nextLine();
-      
-      
+
+
       //Création de l'objet JSON
-      JsonObject jo= Json.createObjectBuilder().add("type", "REGISTER").add("sender_class", strClass).add("sender_name", strName).build();
-      out.println(jo.toString());
+      JSONObject object = new JSONObject();
+      object.put("type", "register");
+      object.put("sender_class", strClass);
+      object.put("sender_name", strName);
+
+      System.out.println(object.toString());
+
+
+      //Envoi du message JSON
+      out.println(object.toString());
+
+
+      //Attente de la réponse du serveur
       System.out.println(in.readLine());
+
+
 
     } catch (UnknownHostException e) {
       e.printStackTrace();
