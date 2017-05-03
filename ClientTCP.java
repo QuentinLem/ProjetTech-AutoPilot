@@ -58,12 +58,21 @@ public class ClientTCP {
 
       //Envoi du message JSON
       out.println(object.toString());
+      out.flush();
 
 
       //Attente de la réponse du serveur
-      System.out.println(in.readLine());
+      String confirm = "";
+      JSONObject jo;
+
+      confirm = in.readLine();
+      jo = new JSONObject(confirm);
+      System.out.println(jo.toString());
 
 
+      System.out.println("Connexion terminée.\n");
+
+      socket.close();
 
     } catch (UnknownHostException e) {
       e.printStackTrace();

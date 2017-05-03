@@ -45,19 +45,26 @@ public class ServeurThreadTCP extends Thread {
 
       System.out.println("Connexion avec le client : " + socket.getInetAddress());
 
-      private String message = "";
+      String message = "";
       JSONObject jReceive;
       JSONObject jSend;
 
-
+      //Récupération du message client
       message = in.readLine();
-      System.out.println(message);
       jReceive = new JSONObject(message);
       System.out.println(jReceive.toString());
 
-      //TERMINER ENVOI
-      //jSend=new JSONObject("");
-      //out.println("{\"type\":\"register\",\"sender_id\":\"1\",\"ack\":{\"resp\":\"ok\"}}");
+      //Envoi confirmation
+      jSend = new JSONObject();
+      jSend.put("type", "register");
+      jSend.put("sender_id", "1");
+      jSend.put("ack", "ok");
+
+      out.println(jSend.toString());
+      out.flush();
+
+
+
 
       socket.close();
     } catch (Exception e) {
