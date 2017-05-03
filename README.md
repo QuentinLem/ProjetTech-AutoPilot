@@ -37,3 +37,10 @@
 ### Enseignants référents :
  - Serge CHAUMETTE          ( serge.chaumette **[at]** labri.fr )
  - Ema FALOMIR-BAGDASSARIAN ( ema.falomir-bagdassarian **[at]** labri.fr )
+
+
+### *TIPS :
+ - Git pull force :
+git fetch --all
+git reset --hard origin/master
+git pull origin master
