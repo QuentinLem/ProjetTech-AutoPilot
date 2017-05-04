@@ -28,17 +28,10 @@ public class ClientTCP {
       String strName;
 
 
+
       /*
-      Exemple d'objet JSON à envoyer :
-      --------------------------------
-      {
-      "type" : "register",
-      "sender_class" : "GPS",
-      "sender_name" : "GPS_2"
-      }
-
+      System.out.println();
       */
-
 
       //Rentrée des caractéristiques de l'appareil
       System.out.println("Enter the class of your device, then press \"Enter\"\n");
@@ -48,10 +41,10 @@ public class ClientTCP {
 
 
       //Création de l'objet JSON
-      JSONObject object = new JSONObject();
-      object.put("type", "register");
-      object.put("sender_class", strClass);
-      object.put("sender_name", strName);
+      JSONObject object = new JSONObject()
+            .put("type", "register")
+            .put("sender_class", strClass)
+            .put("sender_name", strName);
 
       System.out.println(object.toString());
 
