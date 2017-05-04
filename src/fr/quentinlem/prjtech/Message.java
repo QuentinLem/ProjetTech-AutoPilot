@@ -40,4 +40,12 @@ public class Message {
       //this.time = System.currentTimeMillis();
     }
 
+    public JSONObject getMsgContent() {
+      return this.content;
+    }
+
+    public void setMsgContent(JSONObject jo) {
+      this.content = jo;
+    }
+
 }
