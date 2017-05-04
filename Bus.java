@@ -5,7 +5,7 @@ import org.json.*;
 public class Bus {
 
     private final static int N=100;
-    private static Sensor[] devices=new JSONObject[N];
+    private static Sensor[] devices=new Sensor[N];
     
 
 
@@ -14,14 +14,13 @@ public class Bus {
     {
 	String class=rec.getString("sender_class");
 	String name=rec.getString("sender_name");
-	JSONObject dev=new JSONObject()
-	    .put("class",class)
-	    .put("name",name);
+	Sensor dev=;
 	JSONObject resp;
 	for(int i=1;i<N;i++)
 	    {
 		if(devices[i]!=null)
 		    {
+			dev.setSensorId(i);
 			devices[i]=dev;
 			resp=new JSONObject()
 			    .put("type","register")
