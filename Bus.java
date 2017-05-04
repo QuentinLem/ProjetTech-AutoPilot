@@ -1,3 +1,6 @@
+import java.net.*;
+import java.io.*;
+
 import org.json.*;
 
 
@@ -6,7 +9,7 @@ public class Bus {
 
     private final static int N=100;
     private static Sensor[] devices=new Sensor[N];
-    
+
 
 
 
@@ -14,11 +17,11 @@ public class Bus {
     {
 	String class=rec.getString("sender_class");
 	String name=rec.getString("sender_name");
-	Sensor dev=;
+	//Sensor dev=;
 	JSONObject resp;
 	for(int i=1;i<N;i++)
 	    {
-		if(devices[i]!=null)
+		if(devices[i]!=null)                    /*==*/
 		    {
 			dev.setSensorId(i);
 			devices[i]=dev;
@@ -63,20 +66,23 @@ public class Bus {
 
     public JSONObject list(JSONObject rec)
     {
-	
+
     }
 
     public JSONObject send(JSONObject rec)
     {
-	
+
     }
 
     public JSONObject get(JSONObject rec)
     {
-	
+
     }
 
     public JSONObject get_last(JSONObject rec)
     {
-	
+
     }
+
+
+}

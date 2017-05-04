@@ -55,10 +55,13 @@ public class ServeurThreadTCP extends Thread {
       jReceive = new JSONObject(message);
       System.out.println(jReceive.toString());
 
+
+      //Appel du bus ?
+
       /*
       //Gestion du type de requête
 
-      String req = new String(jReceive.getString("type"))
+      String req = jReceive.getString("type");
       if ( req == "register") {
           jSend = register(jReceive);
       }
