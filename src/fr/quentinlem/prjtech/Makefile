@@ -41,6 +41,11 @@ JC = javac
 CLASSES = \
         *.java
 
+SENSORS = \
+				Sensor.java \
+				GPS.java \
+				Accelerometer.java \
+				Gyroscope.java
 
 #
 # the default make target entry
@@ -58,6 +63,8 @@ default:	classes
 #
 
 classes:	$(CLASSES:.java=.class)
+
+sensors:	$(SENSORS:.java=.class)
 
 
 #
