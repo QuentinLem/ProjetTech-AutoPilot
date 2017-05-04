@@ -1,4 +1,4 @@
-package fr.quentinlem.prjtech;
+//package fr.quentinlem.prjtech;
 
 import org.json.*;
 
@@ -27,7 +27,7 @@ public class Message {
       return this.msg_id;
     }
 
-    public setMsgId(long id) {
+    public void setMsgId(long id) {
       this.msg_id = id;
     }
 
@@ -35,7 +35,7 @@ public class Message {
       return this.time;
     }
 
-    public setMsgTime(long t) {
+    public void setMsgTime(long t) {
       this.time = t;
       //this.time = System.currentTimeMillis();
     }
