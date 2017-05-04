@@ -1,4 +1,6 @@
-package fr.quentinlem.prjtech;
+//package fr.quentinlem.prjtech;
+
+import org.json.*;
 
 public class Accelerometer extends Sensor {
 
@@ -34,24 +36,25 @@ public class Accelerometer extends Sensor {
   }
 
   // Setter
-  public void setX(){
-    return x;
+  public void setX(float x){
+    this.x = x;
   }
 
-  public void setY(){
-    return y;
+  public void setY(float y){
+    this.y = y;
   }
 
-  public void setZ(){
-    return z;
+  public void setZ(float z){
+    this.z = z;
   }
 
   // JSON
   public JSONObject getJsonObject(){
     JSONObject jObj = new JSONObject()
-                      .put("x", getX())
-                      .put("y", getY())
-                      .put("z", getZ());
+    .put("x", getX())
+    .put("y", getY())
+    .put("z", getZ());
+    return jObj;
   }
 
   public JSONObject sendJsonObject(){
@@ -59,5 +62,7 @@ public class Accelerometer extends Sensor {
     .put("type", "send")
     .put("sender_id", getSensorId())
     .put("contents", getJsonObject());
+    return jObj;
   }
+
 }

@@ -1,17 +1,19 @@
 package fr.quentinlem.prjtech;
 
-public class Accelerometer extends Sensor {
+import org.json.*;
 
-  private double lng;       //longitude
+public class GPS extends Sensor {
+
+  private double lng;   //longitude
   private double lat;   //latitude
 
-  public Accelerometer(){
+  public GPS(){
     super();
     this.lng = 0;
     this.lat = 0;
   }
 
-  public Accelerometer(double lng, double lat){
+  public GPS(double lng, double lat){
     super();
     this.lng = lng;
     this.lat = lat;
@@ -38,8 +40,9 @@ public class Accelerometer extends Sensor {
   // JSON
   public JSONObject getJsonObject(){
     JSONObject jObj = new JSONObject()
-                      .put("lat", getLat())
-                      .put ("lng", getLng());
+    .put("lat", getLat())
+    .put ("lng", getLng());
+    return jObj;
   }
 
   public JSONObject sendJsonObject(){
@@ -47,5 +50,7 @@ public class Accelerometer extends Sensor {
     .put("type", "send")
     .put("sender_id", getSensorId())
     .put("contents", getJsonObject());
+    return jObj;
   }
+
 }
