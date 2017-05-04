@@ -51,9 +51,9 @@ public class Accelerometer extends Sensor {
   // JSON
   public JSONObject getJsonObject(){
     JSONObject jObj = new JSONObject()
-                      .put("x", getX())
-                      .put("y", getY())
-                      .put("z", getZ());
+    .put("x", getX())
+    .put("y", getY())
+    .put("z", getZ());
     return jObj;
   }
 

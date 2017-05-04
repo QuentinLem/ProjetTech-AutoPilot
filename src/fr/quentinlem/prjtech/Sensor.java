@@ -64,5 +64,5 @@ public class Sensor {
     public int getSensorCurrentMsgId(){
       return sensorCurrentMsgId;
     }
-    
+
 }

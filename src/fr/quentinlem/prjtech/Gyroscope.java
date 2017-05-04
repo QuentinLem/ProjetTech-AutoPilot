@@ -54,6 +54,7 @@ public class Gyroscope extends Sensor {
     .put("x", getX())
     .put("y", getY())
     .put("z", getZ());
+    return jObj;
   }
 
   public JSONObject sendJsonObject(){
@@ -63,5 +64,5 @@ public class Gyroscope extends Sensor {
     .put("contents", getJsonObject());
     return jObj;
   }
-  
+
 }
