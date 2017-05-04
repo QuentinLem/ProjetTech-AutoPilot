@@ -6,8 +6,20 @@ import org.json.*;
 
 public class Bus {
 
-    private final static int N=100;
-    private static Sensor[] devices=new Sensor[N];
+    private int N;
+    private Sensor[] devices;
+
+    public Bus()
+    {
+	N=100;
+	devices=new Sensor[N];
+    }
+    
+    public Bus(int devices_number)
+    {
+	N=devices_number;
+	devices=new Sensor[N];
+    }
     
 
 
