@@ -77,15 +77,15 @@ public class Sensor {
     }
 
     public Message getLastMessage(){
-      if(getSensorCurrentMsgId == 0){
-        return sensorTabMessages[MESSAGE_TAB_SIZE-1];
-      } else {
-        return sensorTabMessages[(int)getSensorCurrentMsgId()-1%MESSAGE_TAB_SIZE];
-      }
+	if(getSensorCurrentMsgId() == 0){
+	    return sensorTabMessages[MESSAGE_TAB_SIZE-1];
+	} else {
+	    return sensorTabMessages[(int)getSensorCurrentMsgId()-1%MESSAGE_TAB_SIZE];
+	}
     }
-
+    
     public Message getMessageById(long id){
-      return sensorTabMessages[(int)id%MESSAGE_TAB_SIZE];
+	return sensorTabMessages[(int)id%MESSAGE_TAB_SIZE];
     }
-
+    
 }
