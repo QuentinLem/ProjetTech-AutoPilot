@@ -39,6 +39,35 @@ public class ServeurThreadTCP extends Thread {
   }
 
 
+  public JSONObject requestHandler(JSONObject jo) {
+    String s = jo.getString("type");
+    JSONObject jRequest;
+
+    if ( s == "register") {
+        jRequest = requestRegister(jo);
+    }
+    else if ( s == "deregister") {
+        jRequest = requestDeregister(jo);
+    }
+    else if ( s == "list") {
+        jRequest = requestList(jo);
+    }
+    else if ( s == "send") {
+        jRequest = requestSend(jo);
+    }
+    else if ( s == "get") {
+        jRequest = requestGet(jo);
+    }
+    else if ( s == "get_last") {
+        jRequest = requestGetLast(jo);
+    }
+    else {
+        jRequest = new JSONObject().put("type", s).put("ack", new JSONObject().put("error", 400));
+    }
+    return jRequest;
+  }
+
+
   public void run() {
     try {
 
@@ -59,37 +88,13 @@ public class ServeurThreadTCP extends Thread {
 
 
       //Appel du bus ?
+      Bus b = new Bus();
 
-      /*
       //Gestion du type de requête
-
-      String req = jReceive.getString("type");
-      if ( req == "register") {
-          jSend = register(jReceive);
-      }
-      else if ( req == "deregister") {
-          jSend = deregister(jReceive);
-      }
-      else if ( req == "list") {
-          jSend = list(jReceive);
-      }
-      else if ( req == "send") {
-          jSend = send(jReceive);
-      }
-      else if ( req == "get") {
-          jSend = get(jReceive);
-      }
-      else if ( req == "get_last") {
-          jSend = get_last(jReceive);
-      }
-      else {
-          jSend.put("type", req).put("ack", new JSONObject().put("error", 400));
-      }
-      */
+      jSend = requestHandler(jReceive);
 
 
       //Envoi confirmation
-
       out.println(jSend.toString());
       out.flush();
 
