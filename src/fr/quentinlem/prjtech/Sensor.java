@@ -10,7 +10,7 @@ public class Sensor {
 
     private final static int MESSAGE_TAB_SIZE = 100;
 
-    private static int sensorId = 0;
+    private int sensorId = -1;
     private String sensorClass;
     private String sensorName;
 
@@ -19,15 +19,15 @@ public class Sensor {
 
     //Constructeur
     public Sensor(){
-      sensorId += 1;
+      sensorId = -1;
       sensorName = new String();
       sensorClass = new String();
       sensorTabMessages = new Message[MESSAGE_TAB_SIZE];
       sensorCurrentMsgId = 0;
     }
 
-    public Sensor(String strClass, String name){
-      sensorId += 1;
+    public Sensor(int id, String strClass, String name){
+      sensorId = id;
       sensorClass = strClass;
       sensorName = name;
       sensorTabMessages = new Message[MESSAGE_TAB_SIZE];
@@ -83,9 +83,9 @@ public class Sensor {
 	    return sensorTabMessages[(int)getSensorCurrentMsgId()-1%MESSAGE_TAB_SIZE];
 	}
     }
-    
+
     public Message getMessageById(long id){
 	return sensorTabMessages[(int)id%MESSAGE_TAB_SIZE];
     }
-    
+
 }

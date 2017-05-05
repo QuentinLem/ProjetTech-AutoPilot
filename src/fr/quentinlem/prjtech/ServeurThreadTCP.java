@@ -43,22 +43,22 @@ public class ServeurThreadTCP extends Thread {
     String s = jo.getString("type");
     JSONObject jRequest;
 
-    if ( s == "register") {
+    if ( s.equals("register")) {
         jRequest = b.requestRegister(jo);
     }
-    else if ( s == "deregister") {
+    else if ( s.equals("deregister")) {
         jRequest = b.requestDeregister(jo);
     }
-    else if ( s == "list") {
+    else if ( s.equals("list")) {
         jRequest = b.requestList(jo);
     }
-    else if ( s == "send") {
+    else if ( s.equals("send")) {
         jRequest = b.requestSend(jo);
     }
-    else if ( s == "get") {
+    else if ( s.equals("get")) {
         jRequest = b.requestGet(jo);
     }
-    else if ( s == "get_last") {
+    else if ( s.equals("get_last")) {
         jRequest = b.requestGetLast(jo);
     }
     else {

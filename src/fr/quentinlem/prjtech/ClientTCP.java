@@ -19,7 +19,7 @@ public class ClientTCP {
       InetAddress serveur = InetAddress.getByName(InetAddress.getLocalHost().getHostAddress()); //ou: args[0]
       socket = new Socket(serveur, port);
 
-      System.out.println("Connecté !\n");
+      System.out.println("Connecté !");
 
       BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
       PrintWriter out = new PrintWriter(socket.getOutputStream());
@@ -29,41 +29,41 @@ public class ClientTCP {
       String strClass;
       String strName;
 
-
-
       /*
       System.out.println();
       */
-
-      //Rentrée des caractéristiques de l'appareil
-      System.out.println("Enter the class of your device, then press \"Enter\"\n");
-      strClass = inSys.nextLine();
-      System.out.println("Enter the name of your device, then press \"Enter\"\n");
-      strName = inSys.nextLine();
-
-
-      //Création de l'objet JSON
-      JSONObject object = new JSONObject()
-            .put("type", "register")
-            .put("sender_class", strClass)
-            .put("sender_name", strName);
-
-      System.out.println(object.toString());
+      int i = 0;
+      while(i < 2){
+        //Rentrée des caractéristiques de l'appareil
+        System.out.println("Enter the class of your device, then press \"Enter\"");
+        strClass = inSys.nextLine();
+        System.out.println("Enter the name of your device, then press \"Enter\"");
+        strName = inSys.nextLine();
 
 
-      //Envoi du message JSON
-      out.println(object.toString());
-      out.flush();
+        //Création de l'objet JSON
+        JSONObject object = new JSONObject()
+              .put("type", "register")
+              .put("sender_class", strClass)
+              .put("sender_name", strName);
+
+        System.out.println(object.toString());
 
 
-      //Attente de la réponse du serveur
-      String confirm = "";
-      JSONObject jo;
+        //Envoi du message JSON
+        out.println(object.toString());
+        out.flush();
 
-      confirm = in.readLine();
-      jo = new JSONObject(confirm);
-      System.out.println(jo.toString());
 
+        //Attente de la réponse du serveur
+        String confirm = "";
+        JSONObject jo;
+
+        confirm = in.readLine();
+        jo = new JSONObject(confirm);
+        System.out.println(jo.toString());
+        i++;
+      }
 
       System.out.println("Connexion terminée.\n");
 
