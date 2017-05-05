@@ -9,103 +9,81 @@ public class Bus {
     private int N;
     private Sensor[] devices;
 
-    public Bus()
-    {
-	N=100;
-	devices=new Sensor[N];
+    public Bus(){
+    	N=100;
+    	devices=new Sensor[N];
     }
-    
-    public Bus(int devices_number)
-    {
-	N=devices_number;
-	devices=new Sensor[N];
+
+    public Bus(int devices_number){
+    	N=devices_number;
+    	devices=new Sensor[N];
     }
-    
+
 
 
     //Requête d'enregistrement auprès du bus
-    public JSONObject requestRegister(JSONObject rec)
-    {
-	//Récupération des informations de l'objet JSON à propos du nouvel appareil
-	String Sclass=rec.getString("sender_class");
-	String name=rec.getString("sender_name");
+    public JSONObject requestRegister(JSONObject rec){
+    	//Récupération des informations de l'objet JSON à propos du nouvel appareil
+    	String Sclass=rec.getString("sender_class");
+    	String name=rec.getString("sender_name");
 
-	//Création d'une nouvelle instance Sensor représentant l'appareil
-	Sensor dev=new Sensor(Sclass,name);
-	JSONObject resp;
+    	//Création d'une nouvelle instance Sensor représentant l'appareil
+    	Sensor dev=new Sensor(Sclass,name);
+    	JSONObject resp;
 
-	//Recherche d'un espace libre pour l'enregistrement de l'appareil dans le bus
-	for(int i=1;i<N;i++)
-	    {
-		if(devices[i]==null)
-		    {
-			//Attribution d'un ID pour l'appareil
-			dev.setSensorId(i);
-			//Enregistrement de l'appareil dans le bus
-			devices[i]=dev;
-			//Création de l'acquittement
-			resp=new JSONObject()
-			    .put("type","register")
-			    .put("sender_id",i)
-			    .put("ack",new JSONObject()
-				 .put("resp","ok"));
-			//Envoi de l'acquittement
-			return resp;
-		    }
-	    }
+    	//Recherche d'un espace libre pour l'enregistrement de l'appareil dans le bus
+      for(int i=1;i<N;i++){
+        if(devices[i]==null){
+          //Attribution d'un ID pour l'appareil
+          dev.setSensorId(i);
+          //Enregistrement de l'appareil dans le bus
+          devices[i]=dev;
+          //Création de l'acquittement
+          resp=new JSONObject()
+          .put("type","register")
+          .put("sender_id",i)
+          .put("ack",new JSONObject()
+          .put("resp","ok"));
+          //Envoi de l'acquittement
+          return resp;
+        }
+      }
 
-	//Création de l'acquittement avec erreur (plus d'espace dans le bus)
-	resp=new JSONObject()
-	    .put("type","register")
-	    .put("ack",new JSONObject()
-		 .put("resp","error")
-		 .put("error_id",400));
-	//Envoi de l'acquittement
-	return resp;
+    //Création de l'acquittement avec erreur (plus d'espace dans le bus)
+    resp=new JSONObject()
+    .put("type","register")
+    .put("ack",new JSONObject()
+    .put("resp","error")
+    .put("error_id",400));
+    //Envoi de l'acquittement
+    return resp;
+  }
+
+  //Requête de déconnexion auprès du bus
+  public JSONObject requestDeregister(JSONObject rec){
+    //Récupération de l'ID de l'appareil dans l'objet JSON
+    int id=rec.getInt("sender_id");
+    JSONObject resp;
+
+    //Vérification de l'existence d'un appareil à l'adresse de l'appareil
+    if(devices[id]!=null){
+      //Effacement de l'appareil dans le bus
+      devices[id]=null;
+      //Envoi de l'acquittement
+      resp=new JSONObject()
+      .put("type","deregister")
+      .put("ack",new JSONObject()
+      .put("resp","ok"));
+    } else {
+      //Envoi de l'acquitement avec erreur (pas d'objet à l'emplacement donné)
+      resp=new JSONObject()
+      .put("type","deregister")
+      .put("ack",new JSONObject()
+      .put("resp","error")
+      .put("error_id",404));
     }
-
-
-
-
-
-
-
-
-    
-
-
-
-    
-
-    //Requête de déconnexion auprès du bus
-    public JSONObject requestDeregister(JSONObject rec)
-    {
-	//Récupération de l'ID de l'appareil dans l'objet JSON
-	int id=rec.getInt("sender_id");
-	JSONObject resp;
-
-	//Vérification de l'existence d'un appareil à l'adresse de l'appareil
-	if(devices[id]!=null)
-	    {
-		//Effacement de l'appareil dans le bus
-		devices[id]=null;
-		//Envoi de l'acquittement
-		resp=new JSONObject()
-		    .put("type","deregister")
-		    .put("ack",new JSONObject()
-			 .put("resp","ok"));
-	    }
-	else
-	    {
-		//Envoi de l'acquitement avec erreur (pas d'objet à l'emplacement donné)
-		resp=new JSONObject()
-		    .put("type","deregister")
-		    .put("ack",new JSONObject()
-			 .put("resp","error")
-			 .put("error_id",404));
-	    }
-	return resp;
-    }
+    return resp;
+  }
 
 
 
@@ -116,7 +94,7 @@ public class Bus {
 
 
 
-    
+
 
 
 
@@ -127,11 +105,11 @@ public class Bus {
 	String name=null;
 	JSONArray array=new JSONArray();
 	JSONObject result;
-	
+
 	//Création du début de l'acquittement
 	JSONObject resp=new JSONObject()
 	    .put("type","list");
-	
+
 	//Classe précisée?
 	try{
 	    Sclass=rec.getString("sender_class");
@@ -174,7 +152,7 @@ public class Bus {
 						array.put(result);
 					    }
 				    }
-				
+
 				//Si on cherche uniquement un nom d'appareil
 				else if(!(name.equals(null)))
 				    {
@@ -230,7 +208,7 @@ public class Bus {
 
 
 
-    
+
 
 
     //Requête d'envoi de message d'un appareil vers le bus
@@ -260,7 +238,7 @@ public class Bus {
 
 
 
-    
+
     //Requête de récupération d'un message d'un appareil particulier, à l'aide de son ID, dans le bus
     public JSONObject requestGet(JSONObject rec)
     {
@@ -313,7 +291,6 @@ public class Bus {
 		return resp;
 	    }
     }
-    
 
 
 
@@ -325,13 +302,14 @@ public class Bus {
 
 
 
-    
+
+
 
     //Requête de récupération du message le plus récent d'un appareil dans le bus
     public JSONObject requestGetLast(JSONObject rec)
     {
 	JSONObject resp;
-	
+
 	//Récupération des informations sur l'appareil et le message
 	int sId=rec.getInt("sender_id");
 

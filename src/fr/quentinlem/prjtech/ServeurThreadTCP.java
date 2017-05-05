@@ -39,27 +39,27 @@ public class ServeurThreadTCP extends Thread {
   }
 
 
-  public JSONObject requestHandler(JSONObject jo) {
+  public JSONObject requestHandler(Bus b, JSONObject jo) {
     String s = jo.getString("type");
     JSONObject jRequest;
 
     if ( s == "register") {
-        jRequest = requestRegister(jo);
+        jRequest = b.requestRegister(jo);
     }
     else if ( s == "deregister") {
-        jRequest = requestDeregister(jo);
+        jRequest = b.requestDeregister(jo);
     }
     else if ( s == "list") {
-        jRequest = requestList(jo);
+        jRequest = b.requestList(jo);
     }
     else if ( s == "send") {
-        jRequest = requestSend(jo);
+        jRequest = b.requestSend(jo);
     }
     else if ( s == "get") {
-        jRequest = requestGet(jo);
+        jRequest = b.requestGet(jo);
     }
     else if ( s == "get_last") {
-        jRequest = requestGetLast(jo);
+        jRequest = b.requestGetLast(jo);
     }
     else {
         jRequest = new JSONObject().put("type", s).put("ack", new JSONObject().put("error", 400));
@@ -77,6 +77,9 @@ public class ServeurThreadTCP extends Thread {
 
       System.out.println("Connexion avec le client : " + socket.getInetAddress());
 
+      //Appel du bus ?
+      Bus b = new Bus();
+
       String message = "";
       JSONObject jReceive;
       JSONObject jSend;
@@ -86,20 +89,11 @@ public class ServeurThreadTCP extends Thread {
       jReceive = new JSONObject(message);
       System.out.println(jReceive.toString());
 
-
-      //Appel du bus ?
-      Bus b = new Bus();
-
       //Gestion du type de requête
-      jSend = requestHandler(jReceive);
-
-
+      jSend = requestHandler(b, jReceive);
       //Envoi confirmation
       out.println(jSend.toString());
       out.flush();
-
-
-
 
       socket.close();
     } catch (Exception e) {
