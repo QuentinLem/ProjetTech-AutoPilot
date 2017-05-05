@@ -23,6 +23,7 @@ public class Message {
     }
     */
 
+
     public long getMsgId() {
       return this.msg_id;
     }
@@ -36,8 +37,7 @@ public class Message {
     }
 
     public void setMsgTime(long t) {
-      this.time = t;
-      //this.time = System.currentTimeMillis();
+      this.time = System.currentTimeMillis();
     }
 
     public JSONObject getMsgContent() {
